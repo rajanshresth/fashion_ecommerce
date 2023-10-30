@@ -28,7 +28,7 @@ export default function RootLayout({
           "min-h-screen font-sans",
           fontSans.variable
         )}>
-          <main>
+          <main className='p-4'>
             <NavBar />
             {children}
           </main>

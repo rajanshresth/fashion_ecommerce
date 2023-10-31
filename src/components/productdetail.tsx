@@ -7,41 +7,10 @@ import { SelectValue, SelectTrigger, SelectLabel, SelectItem, SelectGroup, Selec
 
 type Product = z.infer<typeof selectUserSchema>
 
-// const ProductDetail = async({products}:{products:Product[]}) => {
-    
-//   return (
-//     <>
-//         <div className='flex gap-4 max-h-full'>
-//             <Image src='/assets/vans_old_skool.jpg' width={200} height={200} alt='Vans Old Skool' className='w-[60%]' />
-//             <ul className='w-[40%]'>
-//                 {products.map((product) => (
-//                     <li key={product.productId} className='flex flex-col gap-3'>
-//                         <h1 className='font-bold text-2xl underline'>{product.name}</h1>
-//                         <p className='text-md'>Rating:*****</p>
-//                         <p className='font-semibold text-md'>${product.price}</p>
-//                         <p className='text-md'>Quantity Left:{product.stockQuantity}</p>
-//                         <p className='text-md'>Color:{product.color}</p>
-//                         <p className='text-md'>Size:{product.size}</p>
-//                         <p className='text-md'>Category:{product.category}</p>
-//                         <p className='text-md'>Brand:{product.brand}</p>
-//                         <div>
-//                             <h2 className='font-semibold text-md underline'>Description</h2>
-//                             <p className='text-md'>{product.description}</p>
-//                         </div>
-//                         <Button>Add to Cart</Button>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
-//     </>
-//   )
-// }
-
-
 export default function ProductDetail({products}:{products:Product[]}) {
   return (
-    <div className="max-w-6xl px-4 mx-auto py-6 flex">
-      <div className="w-1/2 pr-4 rounded-full">
+    <div className="max-w-6xl px-4 mx-auto py-6 flex flex-col md:flex-row">
+      <div className="w-full md:w-1/2 mb-6 md:mb-0 pr-4 rounded-full">
         <div className="grid grid-cols-1 gap-6 items-center">
           <Image
             alt="Product"
@@ -57,11 +26,11 @@ export default function ProductDetail({products}:{products:Product[]}) {
         </div>
       </div>
       {products.map((product) => (
-            <div key={product.productId} className="w-1/2 pr-4">
+            <div key={product.productId} className="w-full md:w-1/2 pr-4 pl-4">
                 <div className="mb-6">
                     <h1 className="font-bold text-3xl">{product.name}</h1>
                 </div>
-                <div className="mb-6 grid grid-cols-2 gap-6 items-center">
+                <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div className="text-lg">Stock: {product.stockQuantity}</div>
                     <div className="text-lg">Review: 4.5/5</div>
                 </div>
@@ -129,3 +98,4 @@ export default function ProductDetail({products}:{products:Product[]}) {
     </div>
   )
 }
+

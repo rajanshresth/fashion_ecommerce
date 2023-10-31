@@ -1,4 +1,6 @@
 import { pgTable, pgEnum, uuid, varchar, text, numeric, integer, foreignKey, date } from "drizzle-orm/pg-core"
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 import { sql } from "drizzle-orm"
 export const keyStatus = pgEnum("key_status", ['expired', 'invalid', 'valid', 'default'])
@@ -22,6 +24,13 @@ export const product = pgTable("product", {
 	color: varchar("color", { length: 255 }),
 	brand: varchar("brand", { length: 255 }),
 });
+
+// Schema for inserting a user - can be used to validate API requests
+export const insertUserSchema = createInsertSchema(product);
+ 
+// Schema for selecting a user - can be used to validate API responses
+export const selectUserSchema = createSelectSchema(product);
+
 
 export const productImage = pgTable("product_image", {
 	imageId: uuid("image_id").default(sql`uuid_generate_v4()`).primaryKey().notNull(),

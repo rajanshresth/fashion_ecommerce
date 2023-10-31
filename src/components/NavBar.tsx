@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import {Button} from "@/components/ui/button";
 import { Input } from '@/components/ui/input'
+import { BiUserCircle } from 'react-icons/bi'
 
 export default function Component() {
   return (
@@ -54,25 +55,34 @@ export default function Component() {
         </form>
       </div>
       <NavLinks />
-      <div>
+      <div className='flex gap-2'> 
+        
         <Button size="icon" variant="ghost">
-          <svg
-            className=" h-6 w-6 text-gray-800 dark:text-gray-200"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="8" cy="21" r="1" />
-            <circle cx="19" cy="21" r="1" />
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-          </svg>
-          <span className="sr-only">Shopping Cart</span>
+          <Link href={'/user'}>
+            <BiUserCircle className=" h-6 w-6 text-gray-800 dark:text-gray-200" />
+            <span className="sr-only">User</span>
+          </Link> 
+        </Button>
+        <Button size="icon" variant="ghost">
+          <Link href={'/cart'}>
+                <svg
+                  className=" h-6 w-6 text-gray-800 dark:text-gray-200"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="8" cy="21" r="1" />
+                  <circle cx="19" cy="21" r="1" />
+                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                </svg>
+                <span className="sr-only">Shopping Cart</span>
+          </Link>
         </Button>
       </div>
     </div>
@@ -88,11 +98,11 @@ const NavLinks=()=>{
     {label: "Kid's", href: '/kid'},
   ]
   return(
-    <nav className="hidden md:flex space-x-4">
+    <nav className="hidden md:flex space-x-4 font-bold font-xl">
         {links.map((link)=>(
           <div key={link.href}>
             <Link 
-              className={`text-gray-800 ${currentPathname===link.href ? 'dark:text-gray-200' : 'hover:text-blue-500'}`}
+              className={`text-gray-800 ${currentPathname===link.href ? 'underline dark:text-gray-200' : 'hover:text-blue-500 hover:underline'}`}
               href={link.href}
             >
               {link.label}

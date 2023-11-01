@@ -4,6 +4,7 @@ import '@/styles/globals.css'
 import { Inter as FontSans } from "next/font/google"
 import { cn } from '@/lib/utils'
 import NavBar from '@/components/NavBar'
+import AuthProvider from './auth/Provider'
 
 // const inter = Inter({ subsets: ['latin'] })
 export const fontSans = FontSans({
@@ -28,10 +29,12 @@ export default function RootLayout({
           "min-h-screen font-sans",
           fontSans.variable
         )}>
-            <main className='p-4'>
-              <NavBar />
-              {children}
-            </main>
+            <AuthProvider>
+              <main className='p-4'>
+                <NavBar />
+                {children}
+              </main>
+            </AuthProvider>
         </body>
     </html>
   )
